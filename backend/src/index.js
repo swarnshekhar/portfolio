@@ -17,20 +17,15 @@ const PORT = process.env.PORT || 5000;
 // }));
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, etc.)
-    if (!origin) return callback(null, true);
-    // Allow only your specified origins
-    const allowedOrigins = ['http://localhost:5173', 'https://swarnshekhar.github.io'];
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  methods: ['GET', 'POST', 'OPTIONS'], // Include OPTIONS
-  allowedHeaders: ['Content-Type'], // Specify allowed headers
+  origin: ['http://localhost:5173', 'https://swarnshekhar.github.io', 'https://swarnshekhar.github.io/portfolio','https://swarnshekhar.github.io/portfolio/contacts'],
+  methods: ['POST', 'OPTIONS'],
 }));
+
+
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request for ${req.url}`);
+  next();
+});
 
 
 
