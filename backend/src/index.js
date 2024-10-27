@@ -11,10 +11,28 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // CORS configuration
+// app.use(cors({
+//   origin: ['http://localhost:5173', 'https://swarnshekhar.github.io/portfolio'], // Your frontend URLs
+//   methods: ['POST', 'OPTIONS'], // Allow POST and OPTIONS methods
+// }));
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Your frontend URL
-  methods: ['POST', 'OPTIONS'], // Allow POST and OPTIONS methods
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    // Allow only your specified origins
+    const allowedOrigins = ['http://localhost:5173', 'https://swarnshekhar.github.io'];
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ['GET', 'POST', 'OPTIONS'], // Include OPTIONS
+  allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));
+
+
 
 // Middleware
 app.use(bodyParser.json());

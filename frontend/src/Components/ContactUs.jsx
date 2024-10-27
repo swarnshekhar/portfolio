@@ -15,13 +15,14 @@ const Contact = () => {
     const contactData = { name, email, message };
 
     try {
-      const response = await fetch('http://localhost:9000/api/contact', {
+      const response = await fetch('https://portfolio-3-93cz.onrender.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(contactData),
       });
+      
 
       if (response.ok) {
         const data = await response.json();
@@ -89,7 +90,6 @@ const Contact = () => {
 };
 
 export default Contact;
-<<<<<<< HEAD
 
 
 // import React, { useState } from 'react';
@@ -166,5 +166,3 @@ export default Contact;
 
 // export default Contact;
 
-=======
->>>>>>> origin/main

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 /** @type {import('tailwindcss').Config} */
 
@@ -7,10 +6,6 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-=======
-module.exports = {
-  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
->>>>>>> origin/main
   theme: {
     extend: {
       fontFamily: {
@@ -19,8 +14,4 @@ module.exports = {
     },
   },
   plugins: [],
-<<<<<<< HEAD
 }
-=======
-};
->>>>>>> origin/main
