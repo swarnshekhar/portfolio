@@ -20,7 +20,10 @@ function App() {
    {/* <ProjectCard/> */}
    {/* <Projects/> */}
 
+<<<<<<< HEAD
    <h1 className="font-londrina text-4xl">Welcome to My Portfolio</h1>
+=======
+>>>>>>> origin/main
 
    
 

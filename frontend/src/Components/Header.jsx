@@ -13,7 +13,11 @@ export default function Header() {
         <header className="shadow sticky z-50 top-0 ">
             <nav className="border-gray-200 px-4 lg:px-6 py-2.5">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+<<<<<<< HEAD
                     <Link to="/portfolio/"  className="flex items-center">
+=======
+                    <Link to="/" className="flex items-center">
+>>>>>>> origin/main
                         <img
                             src={logo}
                             className="mr-3 h-12"
@@ -36,7 +40,11 @@ export default function Header() {
                         <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                             <li>
                                 <NavLink
+<<<<<<< HEAD
                                     to="/portfolio/" 
+=======
+                                    to="/"
+>>>>>>> origin/main
                                     className={({ isActive }) =>
                                         `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-600" : "text-gray-300"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
@@ -46,7 +54,11 @@ export default function Header() {
                             </li>
                             <li>
                                 <NavLink
+<<<<<<< HEAD
                                     to="/portfolio/skills"
+=======
+                                    to="/skills"
+>>>>>>> origin/main
                                     className={({ isActive }) =>
                                         `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-600" : "text-gray-300"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
@@ -56,7 +68,11 @@ export default function Header() {
                             </li>
                             <li>
                                 <NavLink
+<<<<<<< HEAD
                                     to="/portfolio/contact"
+=======
+                                    to="/contact"
+>>>>>>> origin/main
                                     className={({ isActive }) =>
                                         `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-600" : "text-gray-300"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
@@ -66,7 +82,11 @@ export default function Header() {
                             </li>
                             <li>
                                 <NavLink
+<<<<<<< HEAD
                                     to="/portfolio/projects"
+=======
+                                    to="/projects"
+>>>>>>> origin/main
                                     className={({ isActive }) =>
                                         `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-600" : "text-gray-300"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
@@ -76,7 +96,11 @@ export default function Header() {
                             </li>
                             <li>
                                 <NavLink
+<<<<<<< HEAD
                                     to="/portfolio/github"
+=======
+                                    to="/github"
+>>>>>>> origin/main
                                     className={({ isActive }) =>
                                         `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-600" : "text-gray-300"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }

@@ -89,6 +89,7 @@ const Contact = () => {
 };
 
 export default Contact;
+<<<<<<< HEAD
 
 
 // import React, { useState } from 'react';
@@ -165,3 +166,5 @@ export default Contact;
 
 // export default Contact;
 
+=======
+>>>>>>> origin/main
