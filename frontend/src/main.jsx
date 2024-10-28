@@ -9,6 +9,7 @@ import Contact from './Components/ContactUs.jsx';
 import Projects from './Components/Projects.jsx';
 import Home from './Components/Home.jsx';
 import Github from './Components/Github.jsx';
+import { DarkModeProvider } from './contexts/DarkModeContext'; // Import your DarkModeProvider
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,10 +23,11 @@ const router = createBrowserRouter(
     )
 );
 
-
 // Render the app
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <DarkModeProvider> {/* Wrap with DarkModeProvider */}
+      <RouterProvider router={router} />
+    </DarkModeProvider>
   </StrictMode>
 );

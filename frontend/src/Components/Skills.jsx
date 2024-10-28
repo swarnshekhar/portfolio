@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import resume from '../assets/resume.jpg';
+import { FaDownload } from 'react-icons/fa';
+import { useDarkMode } from '../contexts/DarkModeContext';
 
 const Skills = () => {
+  const { isDarkMode } = useDarkMode();
   const [activeSkill, setActiveSkill] = useState(null);
 
   const skills = [
@@ -11,60 +15,49 @@ const Skills = () => {
     { name: "MongoDB", level: "Intermediate", description: "NoSQL database management." },
     { name: "Express", level: "Basic", description: "Building web applications and APIs." },
     { name: "Tailwind CSS", level: "Intermediate", description: "Utility-first CSS framework for styling." },
+    { name: "Machine Learning", level: "Basic", description: "Data analysis and predictive modeling using libraries like NumPy and Pandas." },
   ];
 
-  const internships = [
-    { title: "Web Development Intern", company: "Tech Solutions", duration: "June 2022 - August 2022", description: "Developed and maintained web applications using React and Node.js." },
-    { title: "Software Engineering Intern", company: "Innovatech", duration: "January 2023 - April 2023", description: "Assisted in backend development and API integration." },
-  ];
-
-  const experiences = [
-    { title: "Freelance Developer", duration: "January 2021 - Present", description: "Created various web applications for clients, focusing on user experience and responsiveness." },
-    { title: "Volunteer Developer", duration: "March 2020 - December 2020", description: "Contributed to open-source projects, improving skills in collaboration and code quality." },
-  ];
+  const downloadResume = () => {
+    const link = document.createElement('a');
+    link.href = resume;
+    link.setAttribute('download', 'Your_Resume.jpg');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
-    <div className="max-w-6xl mx-auto text-center">
-      <h3 className="text-3xl font-bold mb-6">Skills</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+    <div className={`max-w-6xl mx-auto text-center ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+      <h2 className="text-5xl font-bold mb-6 font-londrina mt-10">Skills</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-10 justify-items-center">
         {skills.map((skill, index) => (
-          <div key={index} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-            <div 
-              className="flex justify-between items-center p-6 cursor-pointer hover:bg-gray-200 transition"
-              onClick={() => setActiveSkill(activeSkill === index ? null : index)}
-            >
+          <div 
+            key={index} 
+            className={`border-2 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 w-80 mb-4 ${isDarkMode ? 'bg-gray-700 border-gray-500' : 'bg-white border-orange-600'}`}
+            onClick={() => setActiveSkill(activeSkill === index ? null : index)}
+          >
+            <div className="flex justify-between items-center p-4 cursor-pointer">
               <h4 className="text-xl font-semibold">{skill.name}</h4>
-              <span className="text-sm text-gray-500">{skill.level}</span>
+              <span className={`text-sm ${isDarkMode ? 'text-white' : 'text-gray-500'}`}>{skill.level}</span>
             </div>
             {activeSkill === index && (
-              <div className="p-6 border-t border-gray-200">
-                <p className="text-gray-700">{skill.description}</p>
+              <div className={`p-4 border-t ${isDarkMode ? 'border-gray-600' : 'border-gray-200'}`}>
+                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{skill.description}</p>
               </div>
             )}
           </div>
         ))}
       </div>
 
-      <h3 className="text-3xl font-bold mb-6">Internships</h3>
-      <div className="space-y-4">
-        {internships.map((internship, index) => (
-          <div key={index} className="bg-gray-100 rounded-lg p-4 shadow">
-            <h4 className="text-xl font-semibold">{internship.title} at {internship.company}</h4>
-            <span className="text-sm text-gray-500">{internship.duration}</span>
-            <p className="text-gray-700 mt-2">{internship.description}</p>
-          </div>
-        ))}
-      </div>
-
-      <h3 className="text-3xl font-bold mb-6">Experience</h3>
-      <div className="space-y-4">
-        {experiences.map((experience, index) => (
-          <div key={index} className="bg-gray-100 rounded-lg p-4 shadow">
-            <h4 className="text-xl font-semibold">{experience.title}</h4>
-            <span className="text-sm text-gray-500">{experience.duration}</span>
-            <p className="text-gray-700 mt-2">{experience.description}</p>
-          </div>
-        ))}
+      <div className="flex justify-center mt-6">
+        <button 
+          onClick={downloadResume} 
+          className={`bg-orange-600 text-white font-bold px-6 py-3 rounded-full transition first-letter: flex items-center mb-20`}
+        >
+          <FaDownload className="mr-2" />
+          ReZume
+        </button>
       </div>
     </div>
   );

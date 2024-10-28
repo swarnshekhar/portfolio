@@ -17,13 +17,13 @@ const PORT = process.env.PORT || 5000;
 // }));
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://swarnshekhar.github.io', 'https://swarnshekhar.github.io/portfolio','https://swarnshekhar.github.io/portfolio/contacts'],
-  methods: ['POST', 'OPTIONS'],
+  origin: '*',
 }));
 
 
+
 app.use((req, res, next) => {
-  console.log(`Received ${req.method} request for ${req.url}`);
+  console.log(`Received ${req.method} request for ${req.url} from ${req.headers.origin}`);
   next();
 });
 

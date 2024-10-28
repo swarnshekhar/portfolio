@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useDarkMode } from '../contexts/DarkModeContext'; // Import dark mode context
 
 const Contact = () => {
+  const { isDarkMode } = useDarkMode(); // Access dark mode state from context
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -22,7 +24,6 @@ const Contact = () => {
         },
         body: JSON.stringify(contactData),
       });
-      
 
       if (response.ok) {
         const data = await response.json();
@@ -43,17 +44,17 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className={`py-20 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-black'}`}>
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-black font-londrina">Contact Me</h2>
-        <p className="mt-4 text-lg text-gray-600">I’d love to hear from you! Fill out the form below:</p>
+        <h2 className="text-5xl font-bold font-londrina">Contact Me</h2>
+        <p className="mt-4 text-lg">I’d love to hear from you! Fill out the form below:</p>
 
-        <div className="mt-10 bg-white shadow-lg rounded-lg p-8 mx-auto w-full max-w-lg">
+        <div className={`mt-10 shadow-lg rounded-lg p-8 mx-auto w-full max-w-lg ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
           <form onSubmit={handleSubmit}>
             <input 
               type="text" 
               placeholder="Your Name" 
-              className="border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition" 
+              className={`border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition ${isDarkMode ? 'bg-gray-600 text-white' : ''}`} 
               value={name}
               onChange={(e) => setName(e.target.value)}
               required 
@@ -61,14 +62,14 @@ const Contact = () => {
             <input 
               type="email" 
               placeholder="Your Email" 
-              className="border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition" 
+              className={`border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition ${isDarkMode ? 'bg-gray-600 text-white' : ''}`} 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required 
             />
             <textarea 
               placeholder="Your Message" 
-              className="border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition" 
+              className={`border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition ${isDarkMode ? 'bg-gray-600 text-white' : ''}`} 
               rows="5" 
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -90,79 +91,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
-// import React, { useState } from 'react';
-
-// const Contact = () => {
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [message, setMessage] = useState('');
-//   const [loading, setLoading] = useState(false);
-//   const [feedback, setFeedback] = useState('');
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     setFeedback('');
-
-//     // Simulating form submission success
-//     setTimeout(() => {
-//       setLoading(false);
-//       setFeedback('Your message has been sent successfully!'); // Simulate success feedback
-//       // Clear the form
-//       setName('');
-//       setEmail('');
-//       setMessage('');
-//     }, 1000); // Simulate a delay for the user experience
-//   };
-
-//   return (
-//     <section id="contact" className="py-20 bg-gray-50">
-//       <div className="max-w-6xl mx-auto text-center">
-//         <h2 className="text-4xl font-bold text-black font-londrina">Contact Me</h2>
-//         <p className="mt-4 text-lg text-gray-600">I’d love to hear from you! Fill out the form below:</p>
-
-//         <div className="mt-10 bg-white shadow-lg rounded-lg p-8 mx-auto w-full max-w-lg">
-//           <form onSubmit={handleSubmit}>
-//             <input 
-//               type="text" 
-//               placeholder="Your Name" 
-//               className="border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition" 
-//               value={name}
-//               onChange={(e) => setName(e.target.value)}
-//               required 
-//             />
-//             <input 
-//               type="email" 
-//               placeholder="Your Email" 
-//               className="border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition" 
-//               value={email}
-//               onChange={(e) => setEmail(e.target.value)}
-//               required 
-//             />
-//             <textarea 
-//               placeholder="Your Message" 
-//               className="border border-gray-300 p-3 w-full mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition" 
-//               rows="5" 
-//               value={message}
-//               onChange={(e) => setMessage(e.target.value)}
-//               required
-//             ></textarea>
-//             <button 
-//               type="submit" 
-//               className={`bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-//               disabled={loading}
-//             >
-//               {loading ? 'Sending...' : 'Send'}
-//             </button>
-//           </form>
-//           {feedback && <p className="mt-4 text-lg text-red-600">{feedback}</p>}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Contact;
-

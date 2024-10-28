@@ -1,4 +1,3 @@
-
 /** @type {import('tailwindcss').Config} */
 
 export default {
@@ -9,7 +8,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        londrina: ['Londrina Sketch', 'sans-serif'], // Use Roboto as the default sans font
+        londrina: ['Londrina Sketch', 'sans-serif'],
+        Raleway: ['Raleway', 'sans-serif']
       },
     },
   },
