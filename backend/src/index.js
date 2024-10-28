@@ -17,9 +17,15 @@ const PORT = process.env.PORT || 5000;
 // }));
 
 app.use(cors({
-  origin: ['http://localhost:5173','https://swarnshekhar.github.io', 'https://swarnshekhar.github.io/portfolio'], // Your frontend URLs
+  origin: [
+    'http://localhost:5173', 
+    'http://localhost:4173',  // Add this line
+    'https://swarnshekhar.github.io', 
+    'https://swarnshekhar.github.io/portfolio'
+  ],
   methods: ['POST', 'OPTIONS'], // Allow specific methods
 }));
+
 app.options('/api/contact', cors());
 
 
