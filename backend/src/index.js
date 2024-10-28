@@ -20,6 +20,7 @@ app.use(cors({
   origin: ['http://localhost:5173','https://swarnshekhar.github.io', 'https://swarnshekhar.github.io/portfolio'], // Your frontend URLs
   methods: ['POST', 'OPTIONS'], // Allow specific methods
 }));
+app.options('/api/contact', cors());
 
 
 
