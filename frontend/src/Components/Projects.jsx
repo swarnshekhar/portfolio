@@ -54,9 +54,12 @@ export default function Projects() {
                 <p className={`project-description text-sm text-center mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                   {repo.description || 'No description available.'}
                 </p>
-                <div className="flex justify-center">
-                  <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition hover:bg-orange-700">
-                    View Project
+                <div className="flex justify-center space-x-4"> {/* Added space between buttons */}
+                  <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition hover:bg-orange-700">
+                    Live
+                  </a>
+                  <a href={`${repo.html_url}/tree/main`} target="_blank" rel="noopener noreferrer" className="bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg transition hover:bg-gray-600">
+                    Code
                   </a>
                 </div>
               </div>

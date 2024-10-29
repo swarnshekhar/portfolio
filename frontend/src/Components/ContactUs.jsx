@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import { useDarkMode } from '../contexts/DarkModeContext'; // Import dark mode context
+import { useDarkMode } from '../contexts/DarkModeContext';
 
 const Contact = () => {
-  const { isDarkMode } = useDarkMode(); // Access dark mode state from context
+  const { isDarkMode } = useDarkMode();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false); // New state to track success
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setFeedback('');
+    setIsSuccess(false); // Reset success state
 
     const contactData = { name, email, message };
 
@@ -28,16 +30,19 @@ const Contact = () => {
       if (response.ok) {
         const data = await response.json();
         setFeedback(data.message); // Notify the user of success
+        setIsSuccess(true); // Set success state
         // Clear the form
         setName('');
         setEmail('');
         setMessage('');
       } else {
         setFeedback('Failed to save contact. Please try again.');
+        setIsSuccess(false); // Set failure state
       }
     } catch (error) {
       console.error('Error:', error);
       setFeedback('An error occurred while submitting the form.');
+      setIsSuccess(false); // Set failure state
     } finally {
       setLoading(false);
     }
@@ -83,7 +88,11 @@ const Contact = () => {
               {loading ? 'Sending...' : 'Send'}
             </button>
           </form>
-          {feedback && <p className="mt-4 text-lg text-red-600">{feedback}</p>}
+          {feedback && (
+            <p className={`mt-4 text-lg ${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
+              {feedback}
+            </p>
+          )}
         </div>
       </div>
     </section>

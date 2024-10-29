@@ -24,8 +24,11 @@ export default function Home() {
           </div>
           <div className="sm:w-1/2 sm:pr-8 text-center sm:text-left">
             <p className="text-lg mb-8 font-bold text-justify font-Raleway">
-              Hi! I'm Swarn Shekhar, a passionate developer with a knack for creating beautiful and functional applications. As a web developer, I have experience working on both the frontend and backend, allowing me to build complete, seamless web experiences.
-              On the backend, I work with frameworks like Node.js and Express, building robust APIs and managing databases with technologies like MongoDB and SQL. My backend skills allow me to handle server-side logic, user authentication, and data management, ensuring that everything runs smoothly behind the scenes.
+           <span className='font-bold text-orange-600'>SwarnShekhar</span> , a passionate web developer with a focus on both frontend and backend technologies, currently honing my skills as a beginner in backend development. As a tech-savvy individual, I believe in the importance of versatility in the ever-evolving tech landscape.
+
+From the very start of my journey, I’ve embraced a wide range of technologies rather than confining myself to a single domain. I’m a firm believer that to create impactful software, one must equip themselves with a diverse skill set. Whether it's web development, DevOps, or machine learning, I am eager to explore and learn.
+
+As a second-year student, I am excited about the endless possibilities in technology and am committed to continuous learning and growth. My goal is to build innovative solutions and contribute meaningfully to humanity via my tech skills.
             </p>
             <a
               href="#projects"
